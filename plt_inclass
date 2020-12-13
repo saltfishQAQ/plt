@@ -1,0 +1,37 @@
+import matplotlib.pyplot as plt
+import pandas as pd
+data = pd.read_csv("visitors2macao0.csv")
+lis1 = []
+lis2 = []
+for i in range(2000,2020):
+    lis2.append(i)
+    people = data[data.year == i].people.sum()
+    lis1.append(people)
+
+plt.plot(lis2, lis1,'r--*')
+plt.suptitle('2000 to 2020')
+plt.xlabel("year")
+plt.ylabel("people")
+plt.show()
+plt.savefig('plt1.jpg',dpi=256)
+
+
+
+import matplotlib.pyplot as plt
+import pandas as pd
+data = pd.read_csv("visitors2macao0.csv")
+lis1 = []
+lis2 = []
+for i in range(1,13):
+    lis2.append(i)
+    people = data[data.month == i].people.sum()
+    lis1.append(people)
+plt.barh(lis2, lis1, alpha=0.5, height=1, color='yellow', edgecolor='red', label='people', lw=3)
+plt.suptitle('visitors to macau')
+plt.xlabel("people")
+plt.ylabel("month")
+plt.legend(loc='upper left')
+plt.grid()
+plt.show()
+plt.savefig('plt2.jpg',dpi=256)
+
